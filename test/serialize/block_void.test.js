@@ -5,6 +5,10 @@ import Serializer from "../../src";
 const rules = [
   {
     serialize(obj, children) {
+      if (obj.object === "document") {
+        return { type: "root", children };
+      }
+
       if (obj.object === "block" && obj.type === "image") {
         return { type: "image" };
       }

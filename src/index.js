@@ -12,17 +12,12 @@ class Serializer {
   }
 
   serialize(value) {
-    const elements = value.document.nodes
-      .map(node => this.serializeNode(node))
-      .toArray();
-
-    return { type: "root", children: elements };
+    return this.serializeNode(value.document);
   }
 
   serializeNode(node) {
     if (node.object === "text") {
       const leaves = node.getLeaves();
-      debugger;
       return leaves.map(leaf => this.serializeLeaf(leaf)).toArray();
     }
 
