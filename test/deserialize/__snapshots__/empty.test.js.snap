@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`deserialize empty tree 1`] = `
+Object {
+  "document": Object {
+    "data": Object {},
+    "nodes": Array [],
+    "object": "document",
+  },
+  "object": "value",
+}
+`;
