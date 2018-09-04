@@ -1,17 +1,19 @@
 {
-  "name": "slate-unist-serializer",
+  "name": "@hundred5/slate-unist-serializer",
   "version": "0.1.0",
   "description": "A unist serializer for Slate.",
   "keywords": [
     "slate",
     "unist"
   ],
+  "main": "lib/index.js",
   "module": "src/index.js",
   "source": true,
   "repository": "https://github.com/Hundred5/slate-unist-serializer",
   "author": "Michal Miskernik <michal@hundred5.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.2",
     "babel-preset-env": "^1.7.0",
@@ -32,10 +34,12 @@
   },
   "files": [
     "src/index.js",
+    "lib/index.js",
     "index.d.ts",
     "README.md"
   ],
   "scripts": {
+    "prepublish": "babel src -d lib",
     "test": "jest"
   }
 }
