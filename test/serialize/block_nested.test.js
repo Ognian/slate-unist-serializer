@@ -1,6 +1,6 @@
 import h from "slate-hyperscript";
 import u from "unist-builder";
-import Serializer from "../../src";
+import { Serializer } from "../../src";
 
 const rules = [
   {

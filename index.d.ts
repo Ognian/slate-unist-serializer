@@ -10,7 +10,6 @@ import {
   TextJSON,
   Value
 } from "slate";
-import { Node } from "unist";
 
 export interface String {
   object: "string";
@@ -20,19 +19,21 @@ export interface String {
 type InputNode = Document | Block | Inline | Mark | String;
 type OutputNode = DocumentJSON | BlockJSON | InlineJSON | MarkJSON | TextJSON;
 
-export interface Rule {
-  serialize?: (node: InputNode, children: Node[]) => Node;
+export interface Rule<Node> {
+  serialize?: (node: InputNode, children: Node[]) => Node | null | undefined;
   deserialize?: (
     node: Node,
     next: (nodes: Node[]) => OutputNode[]
-  ) => OutputNode;
+  ) => OutputNode | null | undefined;
 }
 
-declare class Serializer {
-  constructor(options: Options);
+interface Options<Node> {
+  rules: Rule<Node>[];
+}
+
+export class Serializer<Node> {
+  constructor(options: Options<Node>);
 
   serialize(value: Value): Node;
   deserialize(node: Node): Value;
 }
-
-export = Serializer;

@@ -1,6 +1,6 @@
 import h from "slate-hyperscript";
 import u from "unist-builder";
-import Serializer from "../../src";
+import { Serializer } from "../../src";
 
 const rules = [
   {
@@ -11,6 +11,10 @@ const rules = [
 
       if (obj.object === "block" && obj.type === "image") {
         return { type: "image" };
+      }
+
+      if (obj.object === "string") {
+        return { type: "text", value: obj.text };
       }
     }
   }

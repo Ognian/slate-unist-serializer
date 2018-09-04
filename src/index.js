@@ -6,7 +6,7 @@ const String = new Record({
   text: ""
 });
 
-class Serializer {
+export class Serializer {
   constructor(options) {
     this.rules = options.rules;
   }
@@ -33,6 +33,10 @@ class Serializer {
       if (ret === null) return;
       if (ret) return ret;
     }
+
+    throw new Error(
+      `No serialize rule found for ${node.object} node with type ${node.type}`
+    );
   }
 
   serializeLeaf(leaf) {
@@ -46,6 +50,10 @@ class Serializer {
         if (ret === null) return;
         if (ret) return ret;
       }
+
+      throw new Error(
+        `No serialize rule found for mark with type ${node.type}`
+      );
     }, text);
   }
 
@@ -55,6 +63,8 @@ class Serializer {
       const ret = rule.serialize(string);
       if (ret) return ret;
     }
+
+    throw new Error("No serialize rule found for string");
   }
 
   deserialize(node, options = {}) {
@@ -80,8 +90,6 @@ class Serializer {
       }, []);
     };
 
-    if (node.type === "quote") debugger;
-
     for (const rule of this.rules) {
       if (!rule.deserialize) continue;
       const ret = rule.deserialize(node, next);
@@ -96,6 +104,10 @@ class Serializer {
         return ret;
       }
     }
+
+    throw new Error(
+      `No deserialize rule found for ${node.object} node with type ${node.type}`
+    );
   }
 
   deserializeMark(mark) {
@@ -121,5 +133,3 @@ class Serializer {
     }, []);
   }
 }
-
-export default Serializer;

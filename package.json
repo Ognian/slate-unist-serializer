@@ -2,7 +2,12 @@
   "name": "slate-unist-serializer",
   "version": "0.1.0",
   "description": "A unist serializer for Slate.",
-  "main": "lib/slate-unist-serializer.js",
+  "keywords": [
+    "slate",
+    "unist"
+  ],
+  "module": "src/index.js",
+  "source": true,
   "repository": "https://github.com/Hundred5/slate-unist-serializer",
   "author": "Michal Miskernik <michal@hundred5.com>",
   "license": "MIT",
@@ -17,8 +22,20 @@
     "slate-hyperscript": "0.3.0",
     "unist-builder": "^1.0.3"
   },
+  "peerDependencies": {
+    "immutable": "^3.8.2",
+    "slate": "^0.32.0"
+  },
   "dependencies": {
     "@types/slate": "^0.33.4",
     "@types/unist": "^1.0.0"
+  },
+  "files": [
+    "src/index.js",
+    "index.d.ts",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "jest"
   }
 }
