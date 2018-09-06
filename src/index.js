@@ -24,7 +24,13 @@ export class Serializer {
     const children = node.nodes
       .map(node => this.serializeNode(node))
       .reduce((acc, value) => {
-        return Array.isArray(value) ? [...acc, ...value] : [...acc, value];
+        if (Array.isArray(value)) {
+          return [...acc, ...value];
+        } else if (value != null) {
+          return [...acc, value];
+        } else {
+          return acc;
+        }
       }, []);
 
     for (const rule of this.rules) {
