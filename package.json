@@ -7,7 +7,6 @@
     "unist"
   ],
   "main": "lib/index.js",
-  "module": "src/index.js",
   "source": true,
   "repository": "https://github.com/Hundred5/slate-unist-serializer",
   "author": "Michal Miskernik <michal@hundred5.com>",
@@ -33,7 +32,6 @@
     "@types/unist": "^1.0.0"
   },
   "files": [
-    "src/index.js",
     "lib/index.js",
     "index.d.ts",
     "README.md"
