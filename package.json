@@ -1,6 +1,6 @@
 {
   "name": "@hundred5/slate-unist-serializer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A unist serializer for Slate.",
   "keywords": [
     "slate",
